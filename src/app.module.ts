@@ -7,6 +7,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Accounts } from './accounts/accounts.entity';
 import { AccountsModule } from './accounts/accounts.module'
 
+import { Users } from './users/users.entity';
+import { UsersModule } from './users/users.module'
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -16,9 +19,9 @@ import { AccountsModule } from './accounts/accounts.module'
       username: 'root',
       password: '',
       database: 'rhythm101-test',
-      entities: [Accounts],
+      entities: [Accounts, Users],
       synchronize: true,
-    }), AccountsModule
+    }), AccountsModule, UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

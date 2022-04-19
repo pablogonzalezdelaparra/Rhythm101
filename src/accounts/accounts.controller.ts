@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
+import { Body, Controller, Get, HttpStatus, NotFoundException, Param, Post, Res } from "@nestjs/common";
 
 //Connection to database "Accounts"
 import { Accounts } from './accounts.entity';
@@ -8,11 +8,9 @@ import { AccountsService } from './accounts.service';
 export class AccountsController {
     constructor(private readonly Accountservice: AccountsService) { }
 
-    @Get()
-    async fetchAll(@Res() response) {
-        const accounts = await this.Accountservice.findAll();
-        return response.status(HttpStatus.OK).json({
-            accounts
-        })
+    @Get(':username/:password')
+    async validateAccountReturnUser(@Param('username') username, @Param('password') password) {
+        var answer = this.Accountservice.findAccount(username, password);
+        return (await answer).user;
     }
 }

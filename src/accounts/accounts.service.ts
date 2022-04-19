@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { getRepository } from "typeorm";
 
 //Connection to database "Accounts"
 import { Accounts } from './accounts.entity';
@@ -12,15 +13,13 @@ export class AccountsService {
         private accountsRepository: Repository<Accounts>,
     ) { }
 
-    findAll(): Promise<Accounts[]> {
-        return this.accountsRepository.find();
-    }
-
-    findOne(id: string): Promise<Accounts> {
-        return this.accountsRepository.findOne(id);
-    }
-
-    async remove(id: string): Promise<void> {
-        await this.accountsRepository.delete(id);
-    }
+    findAccount(username: string, password: string): Promise<Accounts> {
+        const answer = getRepository(Accounts)
+            .createQueryBuilder("account")
+            .select("account")
+            .leftJoinAndSelect("account.user", "user")
+            .where("account.username = :username AND account.password = :password", { username: username, password: password })
+            .getOne();
+        return answer;
+    }   
 }
