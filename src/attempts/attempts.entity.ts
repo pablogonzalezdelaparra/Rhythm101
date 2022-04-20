@@ -1,5 +1,6 @@
 import { Entity, Column, JoinColumn, OneToOne, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Players } from 'src/players/players.entity';
+import { Levels } from 'src/levels/levels.entity';
 
 @Entity()
 export class Attempts {
@@ -9,8 +10,8 @@ export class Attempts {
     @Column()
     score: number;
 
-    @Column()
-    level: number;
+    @ManyToOne(() => Levels, (level) => level.attempts)
+    level: Levels
 
     @Column('date')
     date: Date;
@@ -23,4 +24,5 @@ export class Attempts {
 
     @ManyToOne(() => Players, (player) => player.attempts)
     player: Players
+
 }

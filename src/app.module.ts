@@ -6,6 +6,8 @@ import { PlayersModule } from './players/players.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Attempts } from './attempts/attempts.entity';
 import { AttemptsModule } from './attempts/attempts.module'
+import { Levels } from './levels/levels.entity';
+import { LevelsModule } from './levels/levels.module'
 
 @Module({
   imports: [
@@ -16,9 +18,9 @@ import { AttemptsModule } from './attempts/attempts.module'
       username: 'root',
       password: '',
       database: 'rhythm101-test',
-      entities: [Players, Attempts],
+      entities: [Players, Attempts, Levels],
       synchronize: true,
-    }), PlayersModule, AttemptsModule
+    }), PlayersModule, AttemptsModule, LevelsModule
   ],
   controllers: [AppController],
   providers: [AppService],

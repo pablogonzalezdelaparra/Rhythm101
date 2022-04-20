@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PlayersController } from 'src/players/players.controller';
 import { Players } from 'src/players/players.entity';
+import { Levels } from 'src/levels/levels.entity';
+
 import { PlayersService } from 'src/players/players.service';
 import { getRepository, Repository } from 'typeorm';
 import { Attempts } from './attempts.entity';
@@ -19,7 +21,7 @@ export class AttemptsService {
 
     insertAttempt(
         score: number,
-        level: number,
+        level: Levels,
         BeginTime: Date,
         EndTime: Date,
         date: Date,
