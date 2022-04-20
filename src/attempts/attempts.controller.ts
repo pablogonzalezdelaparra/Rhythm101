@@ -11,14 +11,12 @@ export class AttemptsController {
         return answer;
     }
     
-    @Get(':score/:level/:BeginTime/:EndTime/:date/:player')
+    @Get(':score/:level/:BeginTime/:player')
     AddAttempt(
         @Param('score') score,
         @Param('level') level,
         @Param('BeginTime') BeginTime,
-        @Param('EndTime') EndTime,
-        @Param('date') date,
         @Param('player') player) {
-        this.Attemptservice.insertAttempt(score, level, BeginTime, EndTime, date, player);
+        this.Attemptservice.insertAttempt(score, level, BeginTime, player);
     }
 }

@@ -6,33 +6,33 @@ import { Levels } from 'src/levels/levels.entity';
 
 import { PlayersService } from 'src/players/players.service';
 import { getRepository, Repository } from 'typeorm';
-import { Attempts } from './attempts.entity';
+import { Evaluations } from './evaluations.entity';
 
 @Injectable()
-export class AttemptsService {
+export class EvaluationsService {
     constructor(
-        @InjectRepository(Attempts)
-        private attemptsRepository: Repository<Attempts>,
+        @InjectRepository(Evaluations)
+        private evaluationsRepository: Repository<Evaluations>,
     ) { }
 
-    helloAttempts(): string {
-        return "Hello Attempts";
+    helloEvaluations(): string {
+        return "Hello Evaluations";
     }
 
-    insertAttempt(
-        score: number,
-        level: Levels,
-        BeginTime: Date,
+    insertEvaluation(
+        number: number,
+        ability: number,
+        opinion: string,
         player: Players): void {
-        const answer = getRepository(Attempts)
+        const answer = getRepository(Evaluations)
             .createQueryBuilder()
             .insert()
-            .into(Attempts)
+            .into(Evaluations)
             .values([
                 {
-                    score: score,
-                    level: level,
-                    BeginTime: BeginTime,
+                    number: number,
+                    ability: ability,
+                    opinion: opinion,
                     player: player,
                 }
             ])
