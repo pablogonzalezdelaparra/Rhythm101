@@ -38,4 +38,12 @@ export class AttemptsService {
             ])
             .execute();
     }
+
+    getMaxScore() {
+        const answer = getRepository(Attempts)
+        .createQueryBuilder("attempt")
+        .select("MAX(attempt.score)", "MaxScore")
+        .addSelect("attempt.playerId")
+        return answer.getRawOne();
+    }
 }

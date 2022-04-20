@@ -6,6 +6,12 @@ export class AttemptsController {
     constructor(private readonly Attemptservice: AttemptsService) { }
 
     @Get()
+    showMaxScore() {
+        var answer = this.Attemptservice.getMaxScore();
+        return answer;
+    }
+
+    @Get()
     sayHelloAttempts(): string {
         var answer = this.Attemptservice.helloAttempts();
         return answer;

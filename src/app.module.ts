@@ -15,7 +15,7 @@ import { EvaluationsModule } from './evaluations/evaluations.module'
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'localhost', //DigitalOcean
       port: 3306,
       username: 'root',
       password: '',

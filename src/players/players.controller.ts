@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { PlayersService } from './players.service';
 
 @Controller('players')
@@ -23,22 +23,15 @@ export class PlayersController {
         return (await answer).id;
     }
 
-    /*
     @Get(':username/:password')
     validateExistingPlayer(@Param('username') username, @Param('password') password) {
         var answer = this.Playerservice.searchExistingPlayer(username, password);
         return answer;
     }
-    */
 
-    @Get(':name/:birthday/:country/:city/:username/:password')
-    AddPlayer(
-        @Param('name') name,
-        @Param('birthday') birthday,
-        @Param('country') country,
-        @Param('city') city,
-        @Param('username') username,
-        @Param('password') password) {
-        this.Playerservice.insertPlayer(name, birthday, country, city, username, password);
+    @Post()
+    AddPlayer(@Body() body) {
+        this.Playerservice.insertPlayer(body.name, body.birthday, body.country, body.city, body.username, body.password);
+        return "Player was added succesfully";
     }
 }
