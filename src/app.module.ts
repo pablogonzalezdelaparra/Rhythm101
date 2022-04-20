@@ -1,14 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
-//Connection to "Accounts" modules
+import { Players } from './players/players.entity';
+import { PlayersModule } from './players/players.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Accounts } from './accounts/accounts.entity';
-import { AccountsModule } from './accounts/accounts.module'
-
-import { Users } from './users/users.entity';
-import { UsersModule } from './users/users.module'
+import { Attempts } from './attempts/attempts.entity';
+import { AttemptsModule } from './attempts/attempts.module'
 
 @Module({
   imports: [
@@ -19,9 +16,9 @@ import { UsersModule } from './users/users.module'
       username: 'root',
       password: '',
       database: 'rhythm101-test',
-      entities: [Accounts, Users],
+      entities: [Players, Attempts],
       synchronize: true,
-    }), AccountsModule, UsersModule
+    }), PlayersModule, AttemptsModule
   ],
   controllers: [AppController],
   providers: [AppService],
