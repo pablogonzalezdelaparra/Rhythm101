@@ -13,13 +13,13 @@ export class Attempts {
     @ManyToOne(() => Levels, (level) => level.attempts)
     level: Levels
 
-    @Column({ type: 'date' })
+    @Column({ type: 'date', default: () => '(CURRENT_DATE)'})
     date: Date;
 
     @Column('time')
     BeginTime: Date;
 
-    @Column({ type: 'time' })
+    @Column({ type: 'time', default: () => '(CURRENT_TIME)' })
     EndTime: Date;
 
     @ManyToOne(() => Players, (player) => player.attempts)

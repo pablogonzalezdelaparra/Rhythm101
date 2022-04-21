@@ -15,7 +15,7 @@ export class Evaluations {
     @Column()
     opinion: string
 
-    @Column({ type: 'date'})
+    @Column({ type: 'date', default: () => '(CURRENT_DATE)' })
     fecha: Date
 
     @ManyToOne(() => Players, (player) => player.evaluations)
