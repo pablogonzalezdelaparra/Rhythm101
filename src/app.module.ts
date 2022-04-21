@@ -16,11 +16,11 @@ import { EvaluationsModule } from './evaluations/evaluations.module'
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost', //DigitalOcean
+      host: '164.92.118.205', //DigitalOcean
       port: 3306,
-      username: 'root',
-      password: '',
-      database: 'rhythm101-test',
+      username: 'team4',
+      password: 'admin',
+      database: 'rhythm101',
       entities: [Players, Attempts, Levels, Evaluations],
       autoLoadEntities: true,
       synchronize: true,
