@@ -38,7 +38,7 @@ export class PlayersService {
         country: string,
         city: string,
         username: string,
-        password: string): void {
+        password: string) {
         const answer = getRepository(Players)
             .createQueryBuilder()
             .insert()
@@ -52,5 +52,6 @@ export class PlayersService {
                 password: password}
             ])
             .execute();
+            return answer;
     }
 }

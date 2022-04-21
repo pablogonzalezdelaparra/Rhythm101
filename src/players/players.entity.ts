@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
-import { Attempts } from 'src/attempts/attempts.entity';
-import { Evaluations } from 'src/evaluations/evaluations.entity';
+import { Attempts } from '../attempts/attempts.entity';
+import { Evaluations } from '../evaluations/evaluations.entity';
 
 @Entity()
 export class Players {

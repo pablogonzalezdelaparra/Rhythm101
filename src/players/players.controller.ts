@@ -31,7 +31,9 @@ export class PlayersController {
 
     @Post()
     AddPlayer(@Body() body) {
+        console.log(body.name, body.birthday, body.country, body.city, body.username, body.password)
         this.Playerservice.insertPlayer(body.name, body.birthday, body.country, body.city, body.username, body.password);
+        console.log("Damn");
         return "Player was added succesfully";
     }
 }
