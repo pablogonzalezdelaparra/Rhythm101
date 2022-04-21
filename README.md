@@ -1,4 +1,4 @@
-# Rhythm101
+# Rhythm101 - API
 ## Made for Percussive Arts Society (PAS)
 
 ## Authors
