@@ -1,4 +1,4 @@
-# Rhythm101 - Unity API
+# Rhythm101
 ## Made for Percussive Arts Society (PAS)
 
 ## Authors
