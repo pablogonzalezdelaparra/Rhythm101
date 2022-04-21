@@ -9,10 +9,10 @@ export class Evaluations {
     @Column()
     number: number;
 
-    @Column()
+    @Column({ type: 'float'})
     ability: number
 
-    @Column()
+    @Column({ type: 'float' })
     opinion: string
 
     @Column({ type: 'date', default: () => '(CURRENT_DATE)' })

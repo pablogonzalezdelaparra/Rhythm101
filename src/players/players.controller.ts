@@ -30,10 +30,9 @@ export class PlayersController {
     }
 
     @Post()
-    AddPlayer(@Body() body) {
-        console.log(body.name, body.birthday, body.country, body.city, body.username, body.password)
-        this.Playerservice.insertPlayer(body.name, body.birthday, body.country, body.city, body.username, body.password);
-        console.log("Damn");
+    async AddPlayer(@Body() body) {
+        console.log("The data is:", body.name, body.birthday, body.country, body.city, body.username, body.password)
+        const answer = this.Playerservice.insertPlayer(body.name, body.birthday, body.country, body.city, body.username, body.password);
         return "Player was added succesfully";
     }
 }

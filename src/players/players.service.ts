@@ -52,6 +52,5 @@ export class PlayersService {
                 password: password}
             ])
             .execute();
-            return answer;
     }
 }
