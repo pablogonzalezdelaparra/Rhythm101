@@ -23,6 +23,7 @@ export class AttemptsService {
         score: number,
         level: Levels,
         BeginTime: Date,
+        EndTime: Date,
         player: Players): void {
         const answer = getRepository(Attempts)
             .createQueryBuilder()
@@ -33,6 +34,7 @@ export class AttemptsService {
                     score: score,
                     level: level,
                     BeginTime: BeginTime,
+                    EndTime: EndTime,
                     player: player,
                 }
             ])

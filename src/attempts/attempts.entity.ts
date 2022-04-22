@@ -10,19 +10,19 @@ export class Attempts {
     @Column()
     score: number;
 
-    @ManyToOne(() => Levels, (level) => level.attempts)
-    level: Levels
-
-    @Column({ type: 'date', default: () => '(CURRENT_DATE)'})
+    @Column({ type: 'date', default: () => '(CURRENT_DATE)' })
     date: Date;
 
     @Column('time')
     BeginTime: Date;
 
-    @Column({ type: 'time', default: () => '(CURRENT_TIME)' })
+    @Column('time')
     EndTime: Date;
 
     @ManyToOne(() => Players, (player) => player.attempts)
     player: Players
+
+    @ManyToOne(() => Levels, (level) => level.attempts)
+    level: Levels
 
 }

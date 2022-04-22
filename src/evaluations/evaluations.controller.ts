@@ -15,6 +15,5 @@ export class EvaluationsController {
     async AddEvaluation(@Body() body) {
         console.log("The data is:", body.number, body.ability, body.opinion, body.player)
         const answer = this.Evaluationservice.insertEvaluation(body.number, body.ability, body.opinion, body.player);
-        return "Evaluation added succesfully";
     }
 }
