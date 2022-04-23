@@ -19,6 +19,15 @@ export class AttemptsService {
         return "Hello Attempts";
     }
 
+    searchAttemptLevel(idPlayer: string) {
+        const answer = getRepository(Attempts)
+            .createQueryBuilder("attempt")
+            .select("MAX(attempt.level)", "MaxLevel")
+            .where("attempt.player = :idPlayer", {idPlayer: idPlayer})
+            .getRawOne();
+        return answer;
+    }
+
     insertAttempt(
         score: number,
         level: Levels,
@@ -41,6 +50,7 @@ export class AttemptsService {
             .execute();
     }
 
+    /*
     getMaxScore() {
         const answer = getRepository(Attempts)
         .createQueryBuilder("attempt")
@@ -48,4 +58,5 @@ export class AttemptsService {
         .addSelect("attempt.playerId")
         return answer.getRawOne();
     }
+    */
 }
