@@ -13,12 +13,18 @@ export class AttemptsController {
     }
     */
 
+    @Get("leaderboard")
+    async showLeaderboard() {
+        var answer = await this.Attemptservice.searchLeaderboard();
+        return answer;
+    }
+
     @Get()
     sayHelloAttempts(): string {
         var answer = this.Attemptservice.helloAttempts();
         return answer;
     }
-    
+
     @Get(':idPlayer')
     async SearchLevelAttempt(@Param('idPlayer') idPlayer) {
         var answer = await this.Attemptservice.searchAttemptLevel(idPlayer);

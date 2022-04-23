@@ -28,6 +28,17 @@ export class AttemptsService {
         return answer;
     }
 
+    searchLeaderboard() {
+        const answer = getRepository(Attempts)
+            .createQueryBuilder("attempt")
+            .select()
+            .leftJoinAndSelect("attempt.player", "player")
+            .orderBy("attempt.score", "DESC")
+            .take(5)
+            .getMany();
+        return answer;
+    }
+
     insertAttempt(
         score: number,
         level: Levels,
