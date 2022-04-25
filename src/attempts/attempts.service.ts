@@ -28,14 +28,13 @@ export class AttemptsService {
         return answer;
     }
 
-    searchLeaderboard() {
+    searchLeaderboard(idPlayer: number, level: number) {
         const answer = getRepository(Attempts)
             .createQueryBuilder("attempt")
-            .select()
-            .leftJoinAndSelect("attempt.player", "player")
+            .select("attempt.score")
             .orderBy("attempt.score", "DESC")
-            .take(5)
-            .getMany();
+            .where("attempt.player = :idPlayer AND attempt.level = :level", { idPlayer: idPlayer, level: level })
+            .getOneOrFail();
         return answer;
     }
 

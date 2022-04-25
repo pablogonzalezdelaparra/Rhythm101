@@ -13,9 +13,9 @@ export class AttemptsController {
     }
     */
 
-    @Get("leaderboard")
-    async showLeaderboard() {
-        var answer = await this.Attemptservice.searchLeaderboard();
+    @Get(":idPlayer/:level")
+    async showLeaderboard(@Param('idPlayer') idPlayer, @Param('level') level) {
+        var answer = await this.Attemptservice.searchLeaderboard(idPlayer, level);
         return answer;
     }
 
