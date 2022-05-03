@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { getRepository, Repository } from 'typeorm';
 import { Players } from './players.entity';
 
+//Service injectable controller for the "players" module
 @Injectable()
 export class PlayersService {
     constructor(
@@ -10,10 +11,12 @@ export class PlayersService {
         private playersRepository: Repository<Players>,
     ) { }
 
+    //Function that returns a string in order to check the functionality of the app
     helloPlayers(): string{
         return "Hello Players";
     }
 
+    //Function that returns a players full information based on their username
     getPlayerByUsername(username: string): Promise<Players> {
         const answer = getRepository(Players)
         .createQueryBuilder("player")
@@ -23,6 +26,7 @@ export class PlayersService {
         return answer;
     }
 
+    //Function that returns a players full information if the username and password are correct
     searchExistingPlayer(username: string, password: string): Promise<Players> {
         const answer = getRepository(Players)
             .createQueryBuilder("player")
@@ -32,6 +36,7 @@ export class PlayersService {
         return answer;
     }
 
+    //Function that inserts a new player to the database in table "players" 
     insertPlayer(
         name: string,
         birthday: Date,

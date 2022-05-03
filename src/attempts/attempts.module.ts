@@ -6,6 +6,7 @@ import { AttemptsController } from './attempts.controller';
 import { Players } from 'src/players/players.entity';
 import { Levels } from 'src/levels/levels.entity';
 
+//"Attempts" module that organizes and encapsulates the set of capabilities from the "attempts" entity, controllers and services
 @Module({
     imports: [TypeOrmModule.forFeature([Attempts, Players, Levels])],
     providers: [AttemptsService],
